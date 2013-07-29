@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Задание №1</title>
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.map&lang=ru-RU" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="../../style.css">
+	<script type="text/javascript">
+		ymaps.ready(init);
+		function init () {
+			var map;
+			map = new ymaps.Map('map', {
+				center: [47.76, 37.64],
+				zoom: 0,
+				type: null,
+				behaviors: [],
+				maxZoom: 3,
+				minZoom: 0
+			});
+			map.layers.add(new ymaps.Layer("tiles/%z/%x/%y.png"));
+			window.checkAnswer = function () {
+				eval(document.getElementById('answer').value);
+			}
+		}
+	</script>
+</head>
+<body>
+	<center>
+	<table class='main_table'>
+		<tr>
+			<td>
+				<div class="arrow">
+					<div>Задание №1</div>
+					<div class='arrow_end'></div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class='task'>
+                Вы слишком высоко над землей, чтобы видеть ответ.
+                <pre>
+var map;
+map = new ymaps.Map('map', {
+    center: [47.76, 37.64],
+    zoom: 0
+});</pre></td>
+		</tr>
+		<tr>
+			<td class="map_td">
+				<div class="map_wrapper"><center>
+					<div id="map" style="width: 250px; height: 350px"></div>
+				</center></div>
+			</td>
+		</tr>
+		<tr>
+			<td><center>
+				<input class='input' type='text' id='answer'/><button class='button' type='submit' id='ok' onclick="checkAnswer();"/>Ок</button>
+			</center></td>
+		</tr>
+	</table>
+    </center>
+</body>
+
+</html>
