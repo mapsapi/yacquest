@@ -1,5 +1,5 @@
 body {
-    font: 16px arial,sans-serif;
+    font: 20px arial,sans-serif;
     background: #EEE;
 }
 
@@ -53,6 +53,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     -webkit-text-overflow: ellipsis;
+    width: 71%;
 }
 
 #map {
