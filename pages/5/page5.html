@@ -2,9 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Задание №2</title>
-    <script src="http://api-maps.yandex.ru/2.0/?load=package.map,package.geoObjects&lang=ru-RU" type="text/javascript"></script>
-    <script src="data/coordinates.js" type="text/javascript"></script>
+    <title>Задание №5</title>
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="../../style.css">
 	<script type="text/javascript">
 		ymaps.ready(init);
@@ -12,22 +11,13 @@
 			var map;
 			map = new ymaps.Map('map', {
 				center: [55.72, 37.64],
-				zoom: 8,
-				behaviors: []
+				zoom: 8
+			}, {
+				balloonShadow: false,
+				balloonShadowLayout: ymaps.templateLayoutFactory.createClass("<img src='images/shadow.jpg' width=200/>"),
+				balloonCloseButton: false
 			});
-            var coordinates = getCoordinates(),
-                collection = new ymaps.GeoObjectCollection(),
-				c = collection;
-			collection.options.set({
-				opacity: 0,
-				strokeWidth: 5,
-				strokeColor: '#ff0000'
-			});
-            for (var i = 0, l = coordinates.length; i < l; i++) {
-                var polyline = new ymaps.Polyline(coordinates[i]);
-                collection.add(polyline);
-            }
-            map.geoObjects.add(collection);
+            var b = map.balloon.open([55.72, 37.64], "12:00");
 			window.checkAnswer = function () {
 				eval(document.getElementById('answer').value);
 			}
@@ -40,21 +30,17 @@
 		<tr>
 			<td>
 				<div class="arrow">
-					<div>Задание №2</div>
+					<div>Задание №5</div>
 					<div class='arrow_end'></div>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td class='task'>
-                Тут все прозрачно.
+                Тени исчезают в полдень.
                 <pre>
-var c = collection;
-for (var i = 0, l = coordinates.length; i < l; i++) {
-    var polyline = new ymaps.Polyline(coordinates[i]);
-    c.add(polyline);
-}
-map.geoObjects.add(c);
+var b;
+b = map.balloon.open([55.72, 37.64], "12:00");
 </pre></td>
 		</tr>
 		<tr>

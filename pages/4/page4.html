@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Задание №4</title>
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.standard,package.clusters&lang=ru-RU" type="text/javascript"></script>
+    <script src="data/placemarks.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="../../style.css">
+	<script type="text/javascript">
+		ymaps.ready(init);
+		function init () {
+			var map;
+			map = new ymaps.Map('map', {
+				center: [55.72, 37.64],
+				zoom: 8
+			});
+            var params = getPlacemarkParameters(),
+				points = [],
+				clusterer = new ymaps.Clusterer({
+					clusterBalloonContentBodyLayout: 'cluster#balloonAccordionContent',
+					clusterBalloonWidth: 200,
+					clusterBalloonMinWidth: 200,
+					clusterBalloonIconImageOffset: [2, 2],
+					clusterBalloonIconImageSize: [14, 14]
+				}),
+				c = clusterer;
+            for (var i = 0, l = params.length; i < l; i++) {
+                var placemark = new ymaps.Placemark(params[i].coordinates, params[i].properties, params[i].options);
+                points[i] = placemark;
+            }
+            map.geoObjects.add(clusterer);
+			c.add(points);
+			window.checkAnswer = function () {
+				eval(document.getElementById('answer').value);
+			}
+		}
+	</script>
+</head>
+<body>
+	<center>
+	<table class='main_table'>
+		<tr>
+			<td>
+				<div class="arrow">
+					<div>Задание №4</div>
+					<div class='arrow_end'></div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class='task'>
+                Давайте по порядку.
+                <pre>
+var c = clusterer;
+for (var i = 0, l = coordinates.length; i < l; i++) {
+	var placemark = new ymaps.Placemark(coordinates[i]);
+	points[i] = placemark;
+}
+c.add(points);
+</pre></td>
+		</tr>
+		<tr>
+			<td>
+				<input class='input' type='text' id='answer'/>
+				<button class='button' type='submit' id='ok' onclick="checkAnswer();"/>Выполнить</button>
+			</td>
+		</tr>
+		<tr>
+			<td class="map_td">
+				<div class="map_wrapper"><center>
+					<div id="map" style="width: 300px; height: 200px"></div>
+				</center></div>
+			</td>
+		</tr>
+	</table>
+    </center>
+</body>
+
+</html>

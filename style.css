@@ -49,11 +49,12 @@ body {
     top: 0;
     bottom: 0;
     padding: 5px 10px;
-    color: #999;
+    color: black;
     white-space: nowrap;
     overflow: hidden;
     -webkit-text-overflow: ellipsis;
     width: 71%;
+    font: 16px courier;
 }
 
 #map {

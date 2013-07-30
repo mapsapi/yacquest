@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Задание №7</title>
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.map,package.geoObjects,package.clusters&lang=ru-RU" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="../../style.css">
+	<script type="text/javascript">
+		ymaps.ready(init);
+		function init () {
+			var map;
+			map = new ymaps.Map('map', {
+				center: [55.72, 37.64],
+				zoom: 8
+			});
+			var p = new ymaps.Placemark([55.72, 37.64], {balloonContent: "<img src='images/balloonContent.jpg' width=100/>"});
+			function move () {
+				var coords = p.geometry.getCoordinates();
+				p.geometry.setCoordinates([coords[0], coords[1] + 0.05]);
+			}
+			window.setInterval(move, 50);
+			map.geoObjects.add(p);
+		}
+	</script>
+</head>
+<body>
+	<center>
+	<table class='main_table'>
+		<tr>
+			<td>
+				<div class="arrow">
+					<div>Задание №7</div>
+					<div class='arrow_end'></div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class='task'>
+                Поймай меня если сможешь
+            </td>
+		</tr>
+		<tr>
+			<td class="map_td">
+				<div class="map_wrapper"><center>
+					<div id="map" style="width: 300px; height: 200px"></div>
+				</center></div>
+			</td>
+		</tr>
+	</table>
+    </center>
+</body>
+
+</html>

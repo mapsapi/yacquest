@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Задание №6</title>
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.map,package.geoObjects,package.clusters&lang=ru-RU" type="text/javascript"></script>
+	<script src="data/placemarks.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../style.css">
+	<script type="text/javascript">
+		ymaps.ready(init);
+		function init () {
+			var map;
+			map = new ymaps.Map('map', {
+				center: [55.72, 37.64],
+				zoom: 4,
+				behaviors: []
+			});
+			var placemarkParameters = getPlacemarkParameters(),
+				points = [],
+				clusterer = new ymaps.Clusterer();
+            for (var i = 0, l = placemarkParameters.length; i < l; i++) {
+				points[i] = new ymaps.Placemark(placemarkParameters[i].coordinates, placemarkParameters[i].properties, placemarkParameters[i].options);
+			}
+			clusterer.add(points);
+			map.geoObjects.add(clusterer);
+		}
+	</script>
+</head>
+<body>
+	<center>
+	<table class='main_table'>
+		<tr>
+			<td>
+				<div class="arrow">
+					<div>Задание №6</div>
+					<div class='arrow_end'></div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class='task'>
+                Даже не пытайся программировать!
+                <pre>
+· · − − −   · − − − −  − · · · ·
+· · · − −   − − − − −
+· − − − −   · · · · −
+· · · · ·
+</pre></td>
+		</tr>
+		<tr>
+			<td class="map_td">
+				<div class="map_wrapper"><center>
+					<div id="map" style="width: 300px; height: 200px"></div>
+				</center></div>
+			</td>
+		</tr>
+	</table>
+    </center>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Задание №2</title>
+    <title>Задание №3</title>
     <script src="http://api-maps.yandex.ru/2.0/?load=package.map,package.geoObjects&lang=ru-RU" type="text/javascript"></script>
     <script src="data/coordinates.js" type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="../../style.css">
@@ -19,9 +19,8 @@
                 collection = new ymaps.GeoObjectCollection(),
 				c = collection;
 			collection.options.set({
-				opacity: 0,
-				strokeWidth: 5,
-				strokeColor: '#ff0000'
+				strokeColor: '#ff0000',
+				strokeWidth: 100
 			});
             for (var i = 0, l = coordinates.length; i < l; i++) {
                 var polyline = new ymaps.Polyline(coordinates[i]);
@@ -40,21 +39,21 @@
 		<tr>
 			<td>
 				<div class="arrow">
-					<div>Задание №2</div>
+					<div>Задание №3</div>
 					<div class='arrow_end'></div>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td class='task'>
-                Тут все прозрачно.
+                Тут нужно знать тонкости API.
                 <pre>
 var c = collection;
 for (var i = 0, l = coordinates.length; i < l; i++) {
     var polyline = new ymaps.Polyline(coordinates[i]);
-    c.add(polyline);
+    collection.add(polyline);
 }
-map.geoObjects.add(c);
+map.geoObjects.add(collection);
 </pre></td>
 		</tr>
 		<tr>
