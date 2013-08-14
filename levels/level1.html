@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Квест API Яндекс.Карт</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0-alpha.1/jquery.mobile-1.4.0-alpha.1.min.css" />
+    <link rel="stylesheet" href="../assets/style.css"/>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.0-alpha.1/jquery.mobile-1.4.0-alpha.1.min.js"></script>
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script src="../assets/main.js"></script>
+</head>
+<body>
+    <div data-role="page" id="page-index">
+        <script type="text/javascript">
+            $(window).on('mapready', function (e, map) {
+                var msk = [55.75, 37.62];
+                map.setCenter(msk, 3);
+                map.balloon.open(msk, 'А теперь посмотрите на URL страницы<br/>и перейдите на уровень 2!');
+            });
+        </script>
+
+        <div data-role="header" id="header">
+            <h2>Квест API <span class="red">Я</span>ндекс.Карт</h2>
+            <a href="#popup-help"
+               data-role="button" data-rel="popup" data-transition="flow" data-position-to="window"
+               data-icon="info" data-iconpos="notext" data-shadow="false" class="ui-btn-right"
+            ></a>
+        </div>
+
+        <div data-role="content" id="content">
+            <h4>Добро пожаловать в квест YaC!</h4>
+            <div id="puzzle-text">
+                Не всегда будет так просто.
+            </div>
+            <small>Не знаете что делать? Подсказка в правом верхнем углу.</small>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-fullscreen="true" id="footer">
+            <div id="map"></div>
+            <a href="#" class="footer-toggle" data-role="button" data-iconpos="notext" data-icon="arrow-d" data-shadow="false"></a>
+        </div>
+        <a href="#" class="footer-toggle" data-role="button" data-iconpos="notext" data-icon="arrow-u" data-shadow="false"></a>
+
+        <div data-role="popup" id="popup-help">
+            <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-shadow="false">Close</a>
+            <h3>Что делать?</h3>
+            <p>
+                Чтобы вы не скучали в перерывах между докладами, мы предлагаем вам посоревноваться в захватывающем квесте.
+            </p>
+            <p>
+                Вам пригодятся не только смекалка и умение работать с Яндекс.Картами, но и знания о нашем API.
+            </p>
+            <p>
+                Каждый из уровней квеста содержит Карту, на которой спрятано название следующего уровня.
+                Найдите его и подставьте вместо текущего в <b>адресную строку</b> браузера вашего устройства, чтобы перейти дальше.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

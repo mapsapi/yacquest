@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Квест API Яндекс.Карт</title>
+    <style type="text/css">
+body {
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    font-family: Verdana,serif;
+    font-size: 10px;
+    color: #333;
+    height: 3000px;
+}
+
+#viewport {
+    left: 200px;
+    text-align: center;
+    margin-top: 15px;
+    position: fixed;
+}
+
+#iphone-mask {
+    width: 406px;
+    height: 776px;
+    background: url(iphone-mask.png) no-repeat 0 0;
+    text-align: left;
+    display: inline-block;
+}
+
+#clear a {
+    color: #ffffff;
+}
+
+iframe {
+    margin: 140px 0 0 27px;
+}
+        
+#bottom {
+    padding: 20px;
+}
+    </style>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('iframe').load(function () {
+                $(this).contents()
+                    .find('html')
+                        .css('overflow', 'hidden')
+                    .end()
+                    .find('body')
+                        .css('overflow', 'hidden');
+            });
+
+            $(window).bind('scroll', function () {
+                $('iframe').contents().scrollTop(window.scrollY);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="viewport">
+        <div id="iphone-mask">
+            <iframe src="../index.html" width="320" height="460" frameborder="0"></iframe>
+        </div>
+
+        <a href="#" onclick="localStorage.clear(); location.reload(true);">Сбросить настройки.</a>
+        <div id="bottom">
+            @ajaxy_ru &mdash; 2012
+        </div>
+    </div>
+</body>
+</html>
